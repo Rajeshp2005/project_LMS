@@ -25,7 +25,7 @@ const EditBook = () => {
     });
   };
   const fetchBook = async () => {
-    const response = await axios.get(`http://localhost:3000/book/${id}`);
+    const response = await axios.get(`https://mern-with-dp.onrender.com/book/${id}`);
 
     if (response.status == 200) {
       setData(response.data.data);
@@ -43,7 +43,7 @@ const EditBook = () => {
     }); //pair ma vako each key value lai array ma  convert garxa.you can console.log this to watch what hppening..in sort it convert the data to array  so that we can use higher order function like foreach loop
     formData.append("image", image);
     const response = await axios.patch(
-      "http://localhost:3000/book/" + id,
+      "https://mern-with-dp.onrender.com/book/" + id,
       formData
     );
     if (response.status === 200) {
