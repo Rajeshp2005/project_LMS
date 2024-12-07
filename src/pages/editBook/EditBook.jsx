@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const EditBook = () => {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ const EditBook = () => {
     );
     if (response.status === 200) {
       alert("Book edited successfully");
-      navigate("/book/"+id);
+      navigate("/book/" + id);
     } else {
       alert("something went wrong");
     }
@@ -55,22 +56,20 @@ const EditBook = () => {
 
   return (
     <>
+    <div className="bg=white dark:bg-gray-800">
       <Navbar />
-      <div className="bg-white rounded-lg shadow-md p-8 w-full mx-auto my-16 max-w-md">
+      <div className="bg-white dark:bg-black text-black dark:text-white rounded-lg shadow-md p-8 w-full mx-auto my-24 max-w-md">
         <h2 className="text-2xl font-semibold text-blue-600 mb-6">Edit Book</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label
-              htmlFor="bookName"
-              className="block text-sm font-medium text-gray-600"
-            >
+            <label htmlFor="bookName" className="block text-sm font-medium">
               Book Name
             </label>
             <input
               type="text"
               id="bookName"
               name="bookName"
-              className="mt-1 p-2 w-full border rounded-md text-gray-800"
+              className="mt-1 p-2 w-full border rounded-md dark:text-black"
               onChange={handelChange}
               value={data.bookName}
             />
@@ -78,7 +77,7 @@ const EditBook = () => {
           <div className="mb-4">
             <label
               htmlFor="bookPrice"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium"
             >
               Price
             </label>
@@ -86,7 +85,7 @@ const EditBook = () => {
               type="number"
               id="bookPrice"
               name="bookPrice"
-              className="mt-1 p-2 w-full border rounded-md text-gray-800"
+              className="mt-1 p-2 w-full border rounded-md dark:text-black"
               onChange={handelChange}
               value={data.bookPrice}
             />
@@ -94,7 +93,7 @@ const EditBook = () => {
           <div className="mb-4">
             <label
               htmlFor="isbnNumber"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium"
             >
               ISBN NO
             </label>
@@ -102,7 +101,7 @@ const EditBook = () => {
               type="number"
               id="isbnNumber"
               name="isbnNumber"
-              className="mt-1 p-2 w-full border rounded-md text-gray-800"
+              className="mt-1 p-2 w-full border rounded-md dark:text-black"
               onChange={handelChange}
               value={data.isbnNumber}
             />
@@ -110,7 +109,7 @@ const EditBook = () => {
           <div className="mb-4">
             <label
               htmlFor="authorName"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium"
             >
               Author Name
             </label>
@@ -118,7 +117,7 @@ const EditBook = () => {
               type="text"
               id="authorName"
               name="authorName"
-              className="mt-1 p-2 w-full border rounded-md text-gray-800"
+              className="mt-1 p-2 w-full border rounded-md dark:text-black"
               onChange={handelChange}
               value={data.authorName}
             />
@@ -126,7 +125,7 @@ const EditBook = () => {
           <div className="mb-4">
             <label
               htmlFor="publishedAt"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium"
             >
               Publish Date
             </label>
@@ -134,7 +133,7 @@ const EditBook = () => {
               type="date"
               id="publishedAt"
               name="publishedAt"
-              className="mt-1 p-2 w-full border rounded-md text-gray-800"
+              className="mt-1 p-2 w-full border rounded-md dark:text-black"
               onChange={handelChange}
               value={data.publishedAt}
             />
@@ -142,7 +141,7 @@ const EditBook = () => {
           <div className="mb-4">
             <label
               htmlFor="publication"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium"
             >
               Publication Name
             </label>
@@ -150,7 +149,7 @@ const EditBook = () => {
               type="text"
               id="publication"
               name="publication"
-              className="mt-1 p-2 w-full border rounded-md text-gray-800"
+              className="mt-1 p-2 w-full border rounded-md dark:text-black"
               onChange={handelChange}
               value={data.publication}
             />
@@ -158,7 +157,7 @@ const EditBook = () => {
           <div className="mb-4">
             <label
               htmlFor="image"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium"
             >
               Book Image
             </label>
@@ -166,9 +165,8 @@ const EditBook = () => {
               type="file"
               id="image"
               name="image"
-              className="mt-1 p-2 w-full border rounded-md text-gray-800"
+              className="mt-1 p-2 w-full border rounded-md dark:text-black"
               onChange={(e) => setImage(e.target.files[0])}
-              
             />
           </div>
           <div className="mb-4">
@@ -176,7 +174,7 @@ const EditBook = () => {
               name="description"
               id="description"
               placeholder="description about book"
-              className="mt-1 p-2 w-full border rounded-md text-gray-800"
+              className="mt-1 p-2 w-full border rounded-md dark:text-black"
               onChange={handelChange}
               value={data.description}
             ></textarea>
@@ -189,6 +187,8 @@ const EditBook = () => {
             Edit
           </button>
         </form>
+      </div>
+      <Footer/>
       </div>
     </>
   );
