@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { backendUrl } from "../config";
 const SingleBook = () => {
   const navigate = useNavigate();
   console.log("hello");
@@ -9,7 +10,7 @@ const SingleBook = () => {
   const [book, setBook] = useState({});
   console.log(id);
   const fetchBook = async () => {
-    const response = await axios.get(`https://mern-with-dp.onrender.com/book/${id}`);
+    const response = await axios.get(`${backendUrl}/${id}`);
     console.log(response);
     if (response.status == 200) {
       setBook(response.data.data);
@@ -20,7 +21,7 @@ const SingleBook = () => {
   }, []);
   const deleteBook = async () => {
     window.confirm("are you sure?");
-    const response = await axios.delete(`https://mern-with-dp.onrender.com/book/${id}`);
+    const response = await axios.delete(`${backendUrl}/book/${id}`);
     if (response.status === 200) {
       alert("book deleted successfully");
       navigate("/");

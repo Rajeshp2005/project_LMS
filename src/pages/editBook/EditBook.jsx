@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
+import { backendUrl } from "../config";
 
 const EditBook = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const EditBook = () => {
     });
   };
   const fetchBook = async () => {
-    const response = await axios.get(`https://mern-with-dp.onrender.com/book/${id}`);
+    const response = await axios.get(`${backendUrl}/book/${id}`);
 
     if (response.status == 200) {
       setData(response.data.data);
@@ -43,7 +44,7 @@ const EditBook = () => {
     }); //pair ma vako each key value lai array ma  convert garxa.you can console.log this to watch what hppening..in sort it convert the data to array  so that we can use higher order function like foreach loop
     formData.append("image", image);
     const response = await axios.patch(
-      "https://mern-with-dp.onrender.com/book/" + id,
+      `${backendUrl}/book/` + id,
       formData
     );
     if (response.status === 200) {

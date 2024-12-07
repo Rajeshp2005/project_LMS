@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import { backendUrl } from "../config";
 
 const AddBook = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const AddBook = () => {
       formData.append(key, value);
     }); //pair ma vako each key value lai array ma  convert garxa.you can console.log this to watch what hppening..in sort it convert the data to array  so that we can use higher order function like foreach loop
     formData.append("image", image);
-    const response = await axios.post("https://mern-with-dp.onrender.com/book", formData);
+    const response = await axios.post(`${backendUrl}/book`, formData);
     if (response.status === 201) {
       alert("Book added successfully");
       navigate("/");
